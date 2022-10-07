@@ -9,12 +9,12 @@ module.exports =
             this.ImageUrl = imageUrl !== undefined ? category : "";
             this.Date = date !== undefined ? category : "";
             
-            this.setKey("Url");
+            this.setKey("Title");
             this.addValidator('Title', 'string');
             this.addValidator('Category', 'string');
             this.addValidator('Texte', 'string');
             this.addValidator('Category', 'string');
             this.addValidator('ImageUrl', 'url');
-            this.addValidator('Date', 'date');
+            this.addValidator('Date', 'string');
         }
     }
