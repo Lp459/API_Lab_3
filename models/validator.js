@@ -26,7 +26,7 @@ module.exports =
                     case "phone": return /^\(\d\d\d\) \d\d\d-\d\d\d\d$/.test(value);
                     case "email": return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value);
                     case "url": return /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/.test(value);
-                    case "date": return /^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/.test(value);
+                    case "date": return /^\d{2}\/\d{2}\/\d{4}$/.test(value);
                     default:
                         return false;
                 }

@@ -133,6 +133,7 @@
                 }, 250);
             }).on('resizestart', function () {
                 console.log('Started resizing the window');
+                //ICI scroll pour nouvelles
             }).on('resizeend', function () {
                 console.log('Done resizing the window');
                 limit = Math.round($(".scrollContainer").height() / rowHeight * 4);
