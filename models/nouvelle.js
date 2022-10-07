@@ -15,6 +15,6 @@ module.exports =
             this.addValidator('Texte', 'string');
             this.addValidator('Category', 'string');
             this.addValidator('ImageUrl', 'url');
-            this.addValidator('Date', 'string');
+            this.addValidator('Date', 'date');
         }
     }
