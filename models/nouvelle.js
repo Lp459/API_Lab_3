@@ -1,7 +1,7 @@
 const Model = require('./model');
 module.exports =
     class Nouvelle extends Model {
-        constructor(title ,category , texte , imageUrl , date) {
+        constructor(title ,category , texte , imageUrl,date) {
             super();
             this.Title = title !== undefined ? title : "";
             this.Category = category !== undefined ? category : "";
@@ -12,9 +12,9 @@ module.exports =
             this.setKey("Title");
             this.addValidator('Title', 'string');
             this.addValidator('Category', 'string');
-            this.addValidator('Texte', 'string');
+            this.addValidator('Text', 'string');
             this.addValidator('Category', 'string');
             this.addValidator('ImageUrl', 'url');
-            this.addValidator('Date', 'date');
+            this.addValidator('Date', 'string');
         }
     }

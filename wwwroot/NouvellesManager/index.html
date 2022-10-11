@@ -48,16 +48,22 @@
                 <form id="nouvelleForm">
                     <input type="hidden" id="Id_input" value="0">
                     <!-- à changer pour les colones des nouvelles-->
-                    <label for="title_input">Titre</label>
-                    <input type="text" id="title_input" class="form-control" required invalidMessage="Obligatoire">
-
-                    <label for="url_input">Hyperlien</label>
-                    <input type="url" id="url_input" class="form-control URL" required
-                        invalidMessage="Lien invalide">
-
                     <label for="category_input">Catégorie</label>
                     <input type="text" id="category_input" class="form-control" required
                         invalidMessage="Obligatoire">
+
+                    <label for="title_input">Titre</label>
+                    <input type="text" id="title_input" class="form-control" required invalidMessage="Obligatoire">
+
+                    <label for="title_input">Texte</label>
+                    <input type="text" id="texte_input" class="form-control" required invalidMessage="Obligatoire">
+
+                    <label for="url_input">Image Url</label>
+                    <input type="url" id="Image_Url_input" class="form-control URL" required
+                        invalidMessage="Lien invalide">
+                    
+
+                    
                 </form>
             </div>
             <div id="confirmDeleteDlg">
@@ -72,8 +78,9 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="js/customValidation.js"></script>
+    <!--<script src="js/customValidation.js"></script>!-->
     <script src="js/api.js"></script>
+    <script src="js/date.js"></script>
     <script defer>
         const periodicRefreshPeriod = 10;
             let holdCheckETag = false;
@@ -92,7 +99,7 @@
             function checkETag(ETag) {
                 if (!holdCheckETag && ETag != currentETag) {
                     currentETag = ETag;
-                    getBookmarksList();
+                    getNouvellesList();
                 }
             }
             function getNouvellesList(){
@@ -103,8 +110,74 @@
                 }
                 GET_ALL(refreshNouvellesList , error , prepareQueryString() )
             }
-            function refreshNouvellesList(nouvelles){
-
+            function refreshNouvellesList(nouvelles , ETag){
+                
+                function insertNouvelleList(nouvelle) {
+                    let catElem = $(`<div class="postCategory">${nouvelle.Category}</div>`);
+                    let titElem = $(`<div  class="postTitle">${nouvelle.Title}</div>`);
+                    let imageElem= $(`<img src=${nouvelle.ImageUrl}  class=""></img>`);
+                    let texteElem = $(`<div  class="postText partialCollapsed">${nouvelle.Text}</div>`);
+                    let dateElem = $(`<div  class="postDate">${convertToFrenchDate(parseInt(nouvelle.Date))}</div>`);
+                    let editCmd = $(`<div class="cmd editCmd fa fa-pencil-square" nouvelleid="${nouvelle.Id}" title="Editer ${nouvelle.Title}" data-toggle="tooltip">`);
+                    let deleteCmd = $(`<div class="cmd deleteCmd fa fa-window-close" nouvelleid="${nouvelle.Id}" title="Effacer ${nouvelle.Title}" data-toggle="tooltip">`);
+                    let nouvelleRow = $("<div class='bookmarkLayout bookmarkRow'>");
+                    nouvelleRow.append(catElem);
+                    nouvelleRow.append(titElem);
+                    nouvelleRow.append(imageElem);
+                    nouvelleRow.append(texteElem);
+                    nouvelleRow.append(dateElem);
+                    nouvelleRow.append(editCmd);
+                    nouvelleRow.append(deleteCmd);
+                  
+                    
+                    $("#NouvellesList").append(nouvelleRow);
+                }
+                currentETag = ETag;
+                previousScrollPosition = $(".scrollContainer").scrollTop();
+                $("#nouvelleList").empty();
+                let currentCategory = "";
+                for (let nouvelle of nouvelles) {
+                    if (nouvelle.Category !== currentCategory)
+                        currentCategory = nouvelle.Category;
+                    else
+                        nouvelle.Category = "";
+                        insertNouvelleList(nouvelle);
+                }
+                $(".scrollContainer").scrollTop(previousScrollPosition);
+                $(".editCmd").click(e => { editNouvelle(e) });
+                $(".deleteCmd").click(e => { deleteNouvelle(e) });
+                $('[data-toggle="tooltip"]').tooltip();
+            }
+            function editNouvelle(e){
+                holdCheckETag = true;
+                createMode = false;
+                GET_ID(e.target.getAttribute("nouvelleid"), nouvelleToForm, error);
+                holdCheckETag = true;
+                $("#nouvellekDlg").dialog('option', 'title', 'Modification de Nouvelle');
+                $("#nouvelleDlgOkBtn").text("Modifier");
+                $("#nouvelleDlg").dialog('open');
+            }
+            function nouvelleToForm(nouvelle) {
+                $("#Id_input").val(nouvelle.Id);
+                $("#title_input").val(nouvelle.Title);
+                $("#Image_Url_input").val(nouvelle.ImageUrl);
+                $("#category_input").val(nouvelle.Category);
+                $("#texte_input").val(nouvelle.Text);
+            }
+            function deleteNouvelle(e){
+                holdCheckETag = true;
+                nouvelleIdToDelete = e.target.getAttribute("nouvelleid")
+                GET_ID(
+                    nouvelleIdToDelete,
+                    nouvelle => {
+                        $("#confirmationMessage").html("Voulez-vous vraiment effacer la nouvelle <b>" + nouvelle.Title + "</b>?")
+                    },
+                    error
+                );
+                holdCheckETag = true;
+                $("#confirmDlg").dialog('option', 'title', 'Retrait de nouvelle...');
+                $("#confirmDeleteDlgOkBtn").text("Effacer");
+                $("#confirmDeleteDlg").dialog('open');
             }
             function error(status) {
                 let errorMessage = "";
@@ -133,7 +206,7 @@
             function nouvelleFromForm() {
                 if ($("#nouvelleForm")[0].checkValidity()) {
                     //à changer quand le dialog de add/edit est compléter (ajotuer les bonne colonnes)
-                    let nouvelle = { Id: parseInt($("#Id_input").val()), Title: $("#title_input").val(), Url: $("#url_input").val(), Category: $("#category_input").val() };
+                    let nouvelle = { Id: parseInt($("#Id_input").val()), Title: $("#title_input").val(), ImageUrl: $("#Image_Url_input").val(), Category: $("#category_input").val() ,Text:$("#texte_input").val() , Date: convertToFrenchDate(new Date())};
                     return nouvelle;
                 } else {
                     $("#nouvelleForm")[0].reportValidity()
@@ -144,11 +217,20 @@
                 ////à changer quand le dialog de add/edit est compléter (ajotuer les bonne colonnes)
                 $("#Id_input").val("0");
                 $("#title_input").val("");
-                $("#url_input").val("");
+                $("#Image_Url_input").val("");
                 $("#category_input").val("");
+                $("#texte_input").val("");
+            }
+            function newNouvelle() {
+                holdCheckETag = true;
+                createMode = true;
+                resetNouvelleForm()
+                $("#nouvelleDlg").dialog('option', 'title', 'Ajout de Nouvelle');
+                $("#nouvelleDlgOkBtn").text("Ajouter");
+                $("#nouvelleDlg").dialog('open');
             }
             function init_UI() {
-                $("#newNouvelleCmd").click(newBookmark)
+                $("#newNouvelleCmd").click(newNouvelle)
                 
 
                 $(".fa-refresh").click(e => { getNouvellesList() })
@@ -168,15 +250,15 @@
                     maxHeight: 440,
                     position: { my: "top", at: "top", of: window },
                     buttons: [{
-                        id: "NouvelleDlgOkBtn",
-                        text: "Title will be changed dynamically",
+                        id: "nouvelleDlgOkBtn",
+                        text: "title will be changed dynamically",
                         click: function () {
                             let nouvelle = nouvelleFromForm();
                             if (nouvelle) {
                                 if (createMode)
-                                    POST(nouvelle, refreshNouvellesList, error);
+                                    POST(nouvelle, getNouvellesList, error);
                                 else
-                                    PUT(nouvelle, refreshNouvellesList, error);
+                                    PUT(nouvelle, getNouvellesList, error);
                                 resetNouvelleForm();
                                 holdCheckETag = false;
                                 $(this).dialog("close");
