@@ -105,10 +105,27 @@
             function getNouvellesList(){
                 function prepareQueryString(){
                     let queryString = "?sort=Category&sort=Title";
-                    //add code to change querystring if needed
+                    if (!hideSearchBar) {
+                        selectedCategory = $("#searchCategory").val();
+                        let searchTitle = $("#searchTitle").val();
+                        if (selectedCategory != "")
+                            queryString += "&Category=" + selectedCategory;
+                        if (searchTitle != "")
+                            queryString += "&Title=*" + searchTitle + "*";
+                    }
                     return queryString;
                 }
-                GET_ALL(refreshNouvellesList , error , prepareQueryString() )
+                GET_ALL(refreshNouvellesList , error , prepareQueryString() );
+                GET_ALL(refreshCategoryList, error, "?fields=Category");
+            }
+            function refreshCategoryList(categories) {
+                $("#searchCategory").empty();
+                $("#searchCategory").append("<option value=''>Toutes les catégories</option>");
+                for (let item of categories) {
+                    let category = item.Category;
+                    let selected = (selectedCategory == category ? " selected " : "");
+                    $("#searchCategory").append(`<option value='${category}' ${selected}>${category}</option>`);
+                }
             }
             function refreshNouvellesList(nouvelles , ETag){
                 
@@ -134,7 +151,7 @@
                 }
                 currentETag = ETag;
                 previousScrollPosition = $(".scrollContainer").scrollTop();
-                $("#nouvelleList").empty();
+                $("#NouvellesList").empty();
                 let currentCategory = "";
                 for (let nouvelle of nouvelles) {
                     if (nouvelle.Category !== currentCategory)
@@ -231,10 +248,17 @@
             }
             function init_UI() {
                 $("#newNouvelleCmd").click(newNouvelle)
-                
+                $("#searchCategory").change(() => { selectedCategory = $("#searchCategory").val(); getNouvellesList(); })
 
-                $(".fa-refresh").click(e => { getNouvellesList() })
-                
+                $(".fa-refresh").click(e => { getNouvellesList() });
+                $(".fa-search").click(e => {
+                    hideSearchBar = !hideSearchBar;
+                    if (hideSearchBar)
+                        $("#searchBar").hide();
+                    else
+                        $("#searchBar").show();
+                    getNouvellesList();
+                });
 
                 $("#nouvelleDlg").dialog({
                     title: "Nouvelle nouvelle",
