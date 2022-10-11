@@ -12,7 +12,19 @@ body {
     height: 100vh;
     border: 1px solid lightgray;
 }
-
+.postCategory{
+    text-align: center;
+    text-transform: uppercase;
+}
+.postTitle{
+    text-align: center;
+}
+.postText{
+    text-align: center;
+}
+.postDate{
+    text-align: center;
+}
 .headerPanel {
     flex:0.5;
     background-image: linear-gradient(180deg, lightgray, gray);
@@ -40,7 +52,7 @@ body {
     border-top: 1px solid lightgray;
 }
 
-#bookmarksList {
+#NouvellesList {
     width: 100%;
     padding: 10px;
 }
@@ -62,7 +74,7 @@ body {
     align-items: center;
 
 }
-.bookmarkLayout {
+.nouvelleLayout {
     display: grid;
     grid-template-columns: 0.5fr 40px 1fr 35px 35px;
     align-items: center;
@@ -71,15 +83,15 @@ body {
 
 }
 
-.bookmarkRow>.cmd {
+.nouvelleRow>.cmd {
     display: none;
 }
 
-.bookmarkRow:hover>.cmd {
+.nouvelleRow:hover>.cmd {
     display: inline-block;
 }
 
-.bookmarkRow:hover {
+.nouvelleRow:hover {
     background-color: rgb(195, 255, 255);
 }
 
