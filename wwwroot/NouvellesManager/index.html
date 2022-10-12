@@ -131,7 +131,7 @@
                 }
             }
             function refreshNouvellesList(nouvelles , ETag){
-                
+                //scrollContainer.on( 'scrollThreshold.infiniteScroll', insertNouvelleList);
                 function insertNouvelleList(nouvelle) {
                     let catElem = $(`<div class="postCategory">${nouvelle.Category}</div>`);
                     let titElem = $(`<div  class="postTitle">${nouvelle.Title}</div>`);
@@ -160,9 +160,7 @@
                 previousScrollPosition = $(".scrollContainer").scrollTop();
                 $("#NouvellesList").empty();
                 for (let nouvelle of nouvelles) {
-                    
                     insertNouvelleList(nouvelle);
-            
                 }
                 //console.log($(".scrollContainer").scrollTop(previousScrollPosition));
                 $(".editCmd").click(e => { editNouvelle(e) });
