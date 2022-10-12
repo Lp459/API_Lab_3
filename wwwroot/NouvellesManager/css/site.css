@@ -1,5 +1,5 @@
 body {
-    background-image: linear-gradient(45deg, rgb(131, 255, 131), rgb(156, 156, 255));
+    background-image: linear-gradient(45deg, rgb(239, 182, 68), rgb(242, 59, 53)) !important;
 }
 
 .mainContainer {
@@ -12,19 +12,48 @@ body {
     height: 100vh;
     border: 1px solid lightgray;
 }
+
+.newsImg {
+    max-width: 100%;
+    border-radius: 50%;
+    height: auto;
+    box-shadow: 0 4px 10px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
 .postCategory{
     text-align: center;
-    text-transform: uppercase;
+    font-style: italic;
+    font-family: sans-serif;
+    display: inline;
+    margin-bottom: 2px;
 }
 .postTitle{
     text-align: center;
+    font-weight: bold;
+    margin: 5px;
+    margin-top: 2px;
+    font-size: x-large;
 }
 .postText{
     text-align: center;
+    font-size: 17px;
+    font-family: fangsong;
+    margin-top: 9px;
+    justify-self: center;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 7px;
 }
 .postDate{
     text-align: center;
+    font-family: emoji;
+    font-size: 13px;
+    max-width: 228px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    justify-self: left;
 }
+
+
 .headerPanel {
     flex:0.5;
     background-image: linear-gradient(180deg, lightgray, gray);
@@ -40,9 +69,10 @@ body {
 .header {
     width: 100%;
     font-size: 26px;
-    color:rgb(55, 55, 55);
+    color: rgb(55, 55, 55);
     font-weight: bold;
     text-align: center;
+    font-family: auto;
 }
 
 #searchBar {
@@ -99,8 +129,10 @@ body {
     cursor: pointer;
     font-size: 30px !important;
     font-weight: bold;
-    color: blue;
+    color: rgb(189, 134, 39);
     text-align: center;
+    margin: 3px;
+    margin-bottom: 20px;
 }
 
 .cmd:hover {

@@ -17,11 +17,11 @@
         <div class="headerPanel">
             <div class="headerLayout">
                 <img height="50" width="50" src="favicon.ico" alt="" data-toggle="tooltip"
-                    title="Gestionnaire de Nouvelle - Auteur Louis-Philippe Rousseau - Collège Lionel-Groulx">
+                    title="Gestionnaire de Nouvelle - Auteurs: Louis-Philippe Rousseau et Alexandre Carle - Collège Lionel-Groulx">
                 <span class="header">Gestionnaire de Nouvelles </span>
-                <span class="cmd fa fa-plus-square" id="newNouvelleCmd" title="Ajouter une Nouvelle"
+                <span class="cmd fa fa-plus-square" style="color: red" id="newNouvelleCmd" title="Ajouter une Nouvelle"
                     data-toggle="tooltip"></span>
-                <span class="cmd fa fa-search" title="Afficher/masquer la barre de recherche"
+                <span class="cmd fa fa-search" style="color: red" title="Afficher/masquer la barre de recherche"
                     data-toggle="tooltip"></span>
             </div>
             <div id="searchBar">
@@ -66,10 +66,10 @@
                     
                 </form>
             </div>
-            <div id="confirmDeleteDlg">
+            <div id="confirmDeleteDlg" class="confirmDeleteBtn">
                 <span id="confirmationMessage"></span>
             </div>
-            <div id="errorDlg">
+            <div id="errorDlg" class="errorBtn">
                 <span id="errorMessage"></span>
             </div>
         </div>
@@ -132,19 +132,21 @@
                 function insertNouvelleList(nouvelle) {
                     let catElem = $(`<div class="postCategory">${nouvelle.Category}</div>`);
                     let titElem = $(`<div  class="postTitle">${nouvelle.Title}</div>`);
-                    let imageElem= $(`<img src=${nouvelle.ImageUrl}  class=""></img>`);
+                    let imageElem= $(`<img src=${nouvelle.ImageUrl}  class="newsImg"></img>`);
                     let texteElem = $(`<div  class="postText partialCollapsed">${nouvelle.Text}</div>`);
                     let dateElem = $(`<div  class="postDate">${convertToFrenchDate(parseInt(nouvelle.Date))}</div>`);
                     let editCmd = $(`<div class="cmd editCmd fa fa-pencil-square" nouvelleid="${nouvelle.Id}" title="Editer ${nouvelle.Title}" data-toggle="tooltip">`);
                     let deleteCmd = $(`<div class="cmd deleteCmd fa fa-window-close" nouvelleid="${nouvelle.Id}" title="Effacer ${nouvelle.Title}" data-toggle="tooltip">`);
+                    let hr = $("<hr>");                        
                     let nouvelleRow = $("<div class='bookmarkLayout bookmarkRow'>");
                     nouvelleRow.append(catElem);
                     nouvelleRow.append(titElem);
                     nouvelleRow.append(imageElem);
-                    nouvelleRow.append(texteElem);
                     nouvelleRow.append(dateElem);
+                    nouvelleRow.append(texteElem);
                     nouvelleRow.append(editCmd);
                     nouvelleRow.append(deleteCmd);
+                    nouvelleRow.append(hr);
                   
                     
                     $("#NouvellesList").append(nouvelleRow);
