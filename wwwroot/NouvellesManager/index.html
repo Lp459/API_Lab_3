@@ -154,12 +154,7 @@
                 currentETag = ETag;
                 previousScrollPosition = $(".scrollContainer").scrollTop();
                 $("#NouvellesList").empty();
-                //let currentCategory = "";
                 for (let nouvelle of nouvelles) {
-                    /*if (nouvelle.Category !== currentCategory)
-                        currentCategory = nouvelle.Category;
-                    else
-                        nouvelle.Category = "";*/
                     insertNouvelleList(nouvelle);
                 }
                 $(".scrollContainer").scrollTop(previousScrollPosition);
