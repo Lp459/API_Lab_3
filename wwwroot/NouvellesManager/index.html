@@ -91,10 +91,13 @@
             let hideSearchBar = true;
             let nouvelleIdToDelete = 0; // used by confirmDeleteDlg
             let selectedCategory = "";
+            let scrollContainer = $('.scrollContainer');
+            //$('#loading').hide();
 
             init_UI();
             HEAD(checkETag, error);
             setInterval(() => { HEAD(checkETag, error) }, periodicRefreshPeriod * 1000);
+
 
             function checkETag(ETag) {
                 if (!holdCheckETag && ETag != currentETag) {
@@ -137,7 +140,8 @@
                     let dateElem = $(`<div  class="postDate">${convertToFrenchDate(nouvelle.Date)}</div>`);
                     let editCmd = $(`<div class="cmd editCmd fa fa-pencil-square" nouvelleid="${nouvelle.Id}" title="Editer ${nouvelle.Title}" data-toggle="tooltip">`);
                     let deleteCmd = $(`<div class="cmd deleteCmd fa fa-window-close" nouvelleid="${nouvelle.Id}" title="Effacer ${nouvelle.Title}" data-toggle="tooltip">`);
-                    let hr = $("<hr>");                        
+                    let hr = $("<hr>");                   
+                    //let loading = $(`<div id="loading"><img src="loading.gif" alt="Loading..."></div>`);     
                     let nouvelleRow = $("<div class='bookmarkLayout bookmarkRow'>");
                     nouvelleRow.append(catElem);
                     nouvelleRow.append(titElem);
@@ -147,6 +151,7 @@
                     nouvelleRow.append(editCmd);
                     nouvelleRow.append(deleteCmd);
                     nouvelleRow.append(hr);
+                    //nouvelleRow.append(loading);
                   
                     
                     $("#NouvellesList").append(nouvelleRow);
@@ -155,9 +160,11 @@
                 previousScrollPosition = $(".scrollContainer").scrollTop();
                 $("#NouvellesList").empty();
                 for (let nouvelle of nouvelles) {
+                    
                     insertNouvelleList(nouvelle);
+            
                 }
-                $(".scrollContainer").scrollTop(previousScrollPosition);
+                //console.log($(".scrollContainer").scrollTop(previousScrollPosition));
                 $(".editCmd").click(e => { editNouvelle(e) });
                 $(".deleteCmd").click(e => { deleteNouvelle(e) });
                 $('[data-toggle="tooltip"]').tooltip();
