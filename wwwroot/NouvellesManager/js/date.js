@@ -1,5 +1,7 @@
 function convertToFrenchDate(date) {
+    console.log(date);
     date = new Date(date);
+    console.log(date);
     var options = { year: 'numeric', month: 'long', day: 'numeric' };
     var opt_weekday = { weekday: 'long' };
     var weekday = toTitleCase(date.toLocaleDateString("fr-FR", opt_weekday));
