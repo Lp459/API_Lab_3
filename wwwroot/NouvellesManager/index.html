@@ -92,6 +92,8 @@
             let nouvelleIdToDelete = 0; // used by confirmDeleteDlg
             let selectedCategory = "";
             let scrollContainer = $('.scrollContainer');
+            let offset = 0;
+            let limit = 2;
             //$('#loading').hide();
 
             init_UI();
@@ -132,6 +134,10 @@
             }
             function refreshNouvellesList(nouvelles , ETag){
 
+                function getSpecificsNouvelles(offset, limit) {
+                    return nouvelles.slice(offset, limit);
+                }
+
                 function insertNouvelleList(nouvelle) {
                     let catElem = $(`<div class="postCategory">${nouvelle.Category}</div>`);
                     let titElem = $(`<div  class="postTitle">${nouvelle.Title}</div>`);
@@ -158,6 +164,13 @@
                 }
                 currentETag = ETag;
                 $("#NouvellesList").empty();
+
+                //Utiliser scrollTop pour le déroulement de la page et l'ajout de nouvelle
+                //if(scrollTopValue > valeurScrollTop_hr) {
+                //      for(let nouvelle of getSpecificsNouvelles(offset, limit)) {
+                //          insertNouvelleList(nouvelle);                  
+                //      }
+                //  }
                 for (let nouvelle of nouvelles) {
                     insertNouvelleList(nouvelle);
                 }
