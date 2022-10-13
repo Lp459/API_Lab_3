@@ -99,11 +99,21 @@
             init_UI();
             HEAD(checkETag, error);
             setInterval(() => { HEAD(checkETag, error) }, periodicRefreshPeriod * 1000);
+            let limitScrollTop = 
+            scrollContainer.scroll(e=>{
 
+                if(scrollContainer.scrollTop() + scrollContainer.innerHeight() >= scrollContainer[0].scrollHeight) {
+                    currentETag = " ";
+                    limit += 1;
+                    HEAD(checkETag , error);
+                    
+                }
+            })
 
             function checkETag(ETag) {
                 if (!holdCheckETag && ETag != currentETag) {
                     currentETag = ETag;
+                    //ici trouver comment changer la limit maybe
                     getNouvellesList();
                 }
             }
@@ -118,7 +128,7 @@
                         if (searchTitle != "")
                             queryString += "&Title=*" + searchTitle + "*";
                     }
-                    return queryString;
+                    return queryString + `&offset=${offset}&limit=${limit}`;
                 }
                 GET_ALL(refreshNouvellesList , error , prepareQueryString() );
                 GET_ALL(refreshCategoryList, error, "?fields=Category");
@@ -134,14 +144,6 @@
             }
             function refreshNouvellesList(nouvelles , ETag){
                 
-                //Exemple de fonction à utiliser pour le load on scroll
-                function getSpecificsNouvelles(offset, limit) {
-                    function prepareQueryString() {
-                        return `?offset="${offset}"&limit="${limit}"`;
-                    }
-                    //GET_NOUVELLES(refreshNouvellesList, error, prepareQueryString() );
-                }
-
                 function insertNouvelleList(nouvelle) {
                     let catElem = $(`<div class="postCategory">${nouvelle.Category}</div>`);
                     let titElem = $(`<div  class="postTitle">${nouvelle.Title}</div>`);
@@ -169,12 +171,7 @@
                 currentETag = ETag;
                 $("#NouvellesList").empty();
 
-                //Utiliser scrollTop pour le déroulement de la page et l'ajout de nouvelle
-                //if(scrollTopValue > valeurScrollTop_hr) {
-                //      for(let nouvelle of getSpecificsNouvelles(offset, limit)) {
-                //          insertNouvelleList(nouvelle);                  
-                //      }
-                //  }
+
                 for (let nouvelle of nouvelles) {
                     insertNouvelleList(nouvelle);
                 }
