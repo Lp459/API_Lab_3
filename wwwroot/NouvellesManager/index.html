@@ -133,9 +133,13 @@
                 }
             }
             function refreshNouvellesList(nouvelles , ETag){
-
+                
+                //Exemple de fonction à utiliser pour le load on scroll
                 function getSpecificsNouvelles(offset, limit) {
-                    return nouvelles.slice(offset, limit);
+                    function prepareQueryString() {
+                        return `?offset="${offset}"&limit="${limit}"`;
+                    }
+                    //GET_NOUVELLES(refreshNouvellesList, error, prepareQueryString() );
                 }
 
                 function insertNouvelleList(nouvelle) {
