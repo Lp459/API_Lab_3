@@ -97,8 +97,7 @@
 
             init_UI();
             HEAD(checkETag, error);
-            setInterval(() => { HEAD(checkETag, error) }, periodicRefreshPeriod * 1000);
-            let limitScrollTop = 
+            setInterval(() => { HEAD(checkETag, error) }, periodicRefreshPeriod * 1000); 
             scrollContainer.scroll(()=>{
 
                 if(scrollContainer.scrollTop() + scrollContainer.innerHeight() >= scrollContainer[0].scrollHeight) {
