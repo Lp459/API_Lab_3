@@ -5,7 +5,7 @@
     "ImageUrl": "https://m1.quebecormedia.com/emp/emp/thumbnail_kanye_copie0f7aecfc-5198-4dec-815c-2a3e6f6e059d_ORIGINAL.jpg?impolicy=crop-resize&x=0&y=0&w=1200&h=630&width=968",
     "Category": "Argent",
     "Text": "L'équipementier sportif allemand a annoncé dans un communiqué qu'«après des tentatives répétées pour clarifier la situation à l'écart du public», il avait été décidé de «réévaluer ce partenariat».",
-    "Date": "October 11 2022 17:26:42"
+    "Date": "October 11 2022 17:26:00"
   },
   {
     "Id": 10,
@@ -115,8 +115,56 @@
     "Id": 8,
     "Category": "Ukraine",
     "Title": "«Pas d'indications» que la Russie se prépare «de manière imminente» à utiliser l'arme nucléaire",
-    "Text": "l s'était dit prêt à utiliser «tous les moyens» dans son arsenal face à l'Occident, qu'il avait accusé de vouloir «détruire» la Russie.",
+    "Text": "Il s'était dit prêt à utiliser «tous les moyens» dans son arsenal face à l'Occident, qu'il avait accusé de vouloir «détruire» la Russie.",
     "ImageUrl": "https://m1.quebecormedia.com/emp/emp/46262c20_ea9b_11ec_a561_0733cb5daa92af7583ef-eecb-4cc3-90c3-082532591401_ORIGINAL.jpg?impolicy=crop-resize&x=0&y=0&w=2622&h=1725&width=968",
     "Date": "October 7, 2022 8:38:00"
+  },
+  {
+    "Id": 16,
+    "Category": "Politique",
+    "Title": "Le programme NEXUS « pris en otage » par Washington, estime l'ambassadrice canadienne",
+    "Text": "L'ambassadrice du Canada aux États-Unis blâme les Américains pour les retards dans la réouverture des 13 centres d'inscription NEXUS du Canada, alors que ceux aux États-Unis sont rouverts depuis le mois d'avril. Kirsten Hillman a qualifié la situation de décevante et de frustrante. Il y a une tentative de renégocier unilatéralement les termes d'un programme vieux de 20 ans et le programme est pris en otage par cet effort, a déclaré Mme Hillman lors d'un sommet d'une journée sur les questions frontalières entre le Canada et les États-Unis, organisé à l'ambassade canadienne à Washington. Les tactiques utilisées par les États-Unis sont très sévères et ne correspondent pas à ce qui a longtemps été une relation cordiale et coopérative avec le Canada, a-t-elle poursuivi.",
+    "ImageUrl": "https://images.radio-canada.ca/q_auto,w_960/v1/ici-info/16x9/programme-nexus-frontiere-canada-etats-unis-douanes.jpeg",
+    "Date": "October 14, 2022 8:05:00"
+  },
+  {
+    "Id": 17,
+    "Category": "Justice et faits divers",
+    "Title": "Meurtre de Guylaine Potvin : l'accusé aurait pu faire d'autres victimes",
+    "Text": "Marc-André Grenon, arrêté mercredi en lien avec un meurtre survenu il y a 22 ans, aurait pu faire d'autres victimes, selon la Sûreté du Québec. L'homme de 47 ans a été formellement accusé jeudi du meurtre et de l'agression sexuelle de Guylaine Potvin à Jonquière en avril 2000 et de tentative de meurtre et d'agression sexuelle à l'endroit d'une femme de Québec quelques mois plus tard. Vendredi, la SQ a indiqué que l'homme aurait pu faire d'autres victimes. Les policiers disent d'ailleurs avoir réussi à faire le lien entre l'homme et les deux histoires survenues dans les années passées.",
+    "ImageUrl": "https://images.radio-canada.ca/q_auto,w_960/v1/ici-info/16x9/marc-andre-grenon-343.jpg",
+    "Date": "October 14, 2022 7:47:00"
+  },
+  {
+    "Id": 18,
+    "Category": "Économie",
+    "Title": "Beyond Meat dégraisse ses effectifs et retranche 200 emplois",
+    "Text": "Beyond Meat a abaissé ses projections de revenus pour la deuxième fois cette année et annoncé la suppression de 200 emplois, soit 19 % de son effectif total. La société explique être confrontée à un ralentissement de la demande pour la viande végétale, car les consommateurs recherchent des solutions plus économiques pour faire face à la hausse des prix. L'entreprise a également annoncé le départ de son directeur financier Philip Hardin d'ici la fin d'octobre et nommé le président du conseil d'administration, Lubi Kutua, pour le remplacer. M. Hardin était en poste depuis un peu plus d'un an. Le titre de Beyond Meat a chuté de 10 % avant l'ouverture des marchés, l'entreprise citant une hausse de la concurrence comme un autre facteur justifiant la baisse de ses prévisions.",
+    "ImageUrl": "https://images.radio-canada.ca/q_auto,w_960/v1/audio/16x9/beyond-meat-fausse-viande.jpg",
+    "Date": "October 14, 2022 9:26:00"
+  },
+  {
+    "Id": 19,
+    "Category": "Politique",
+    "Title": "Quel avenir pour le Parti vert du Canada après plusieurs mois de conflits?",
+    "Text": "Rien ne va plus au Parti vert du Canada, enlisé depuis plus d'un an dans des guerres intestines. C'est sur fond de tensions que la formation politique a lancé sa course à la direction le 3 septembre et, depuis, les déboires ne font que s'accumuler. Fin septembre, le parti a annoncé l'annulation du premier tour de scrutin de sa course à la direction, en raison de problèmes organisationnels. Le vote débutera finalement le 12 novembre et prendra fin une semaine plus tard. Six candidats s'affrontent; tous reconnaissent que les dernières années ont été difficiles, mais chacun affirme être prêt à aller de l'avant. Parmi les aspirants au poste de chef du parti, on compte Elizabeth May, qui a dirigé la formation pendant 13 ans.",
+    "ImageUrl": "https://images.radio-canada.ca/q_auto,w_960/v1/audio/16x9/beyond-meat-fausse-viande.jpg",
+    "Date": "October 14, 2022 4:02:00"
+  },
+  {
+    "Id": 20,
+    "Category": "Société",
+    "Title": "Le dernier navire de ravitaillement de l'année est arrivé à Kuujjuaq",
+    "Text": "C'est une véritable course contre la montre qui s'opère, ces jours-ci, sur la rivière Koksoak, à Kuujjuaq. Les navires déchargent leur cargaison pour la dernière fois cette année, avant que la glace ne prenne possession de la baie d'Ungava. Les véhicules, les conteneurs, les matériaux et les denrées en tout genre doivent passer par ce lien maritime coûteux, mais essentiel pour les résidents des communautés inuit du Nunavik.",
+    "ImageUrl": "https://images.radio-canada.ca/q_auto,w_960/v1/ici-info/16x9/transport-nunavik-kuujjuaq-conteneur-74941.JPG",
+    "Date": "October 14, 2022 8:09:00"
+  },
+  {
+    "Id": 21,
+    "Category": "Transports",
+    "Title": "Fermeture du tunnel Louis-H.-La Fontaine : les camionneurs craignent un cauchemar",
+    "Text": "Les camionneurs redoutent les conséquences de la fermeture, dès le 31 octobre, de trois voies du tunnel Louis-Hippolyte-La Fontaine, qui relie Montréal et Longueuil, pour des travaux de réfection majeurs. Cette fermeture, dont les détails ont été rendus publics jeudi par le ministère des Transports du Québec (MTQ), laissera aux conducteurs deux voies en direction de Montréal et une seule en direction de la Rive-Sud. En entrevue à Tout un matin, Michel Robert, président et chef de la direction du Groupe Robert basé à Boucherville, ne cache pas ses appréhensions.",
+    "ImageUrl": "https://images.radio-canada.ca/q_auto,w_960/v1/ici-info/transit/16x9/photo-radio-canada-ivanoh-demers-travaux-de-construction-aux-abords-du-tunnel-louis-hippolyte-lafontaine-travaux-de-renovations-traffic-congestion-circulation-photo-prise-a-partir-de-la-rue-hochelaga-28006.jpg",
+    "Date": "October 14, 2022 11:22:00"
   }
 ]
