@@ -94,7 +94,6 @@
             let scrollContainer = $('.scrollContainer');
             let offset = 0;
             let limit = 2;
-            //$('#loading').hide();
 
             init_UI();
             HEAD(checkETag, error);
@@ -113,7 +112,6 @@
             function checkETag(ETag) {
                 if (!holdCheckETag && ETag != currentETag) {
                     currentETag = ETag;
-                    //ici trouver comment changer la limit maybe
                     getNouvellesList();
                 }
             }
@@ -152,8 +150,7 @@
                     let dateElem = $(`<div  class="postDate">${convertToFrenchDate(nouvelle.Date)}</div>`);
                     let editCmd = $(`<div class="cmd editCmd fa fa-pencil-square" nouvelleid="${nouvelle.Id}" title="Editer ${nouvelle.Title}" data-toggle="tooltip">`);
                     let deleteCmd = $(`<div class="cmd deleteCmd fa fa-window-close" nouvelleid="${nouvelle.Id}" title="Effacer ${nouvelle.Title}" data-toggle="tooltip">`);
-                    let hr = $("<hr>");                   
-                    //let loading = $(`<div id="loading"><img src="loading.gif" alt="Loading..."></div>`);     
+                    let hr = $("<hr>");                     
                     let nouvelleRow = $("<div class='bookmarkLayout bookmarkRow'>");
                     nouvelleRow.append(catElem);
                     nouvelleRow.append(titElem);
@@ -163,15 +160,12 @@
                     nouvelleRow.append(editCmd);
                     nouvelleRow.append(deleteCmd);
                     nouvelleRow.append(hr);
-                    //nouvelleRow.append(loading);
                   
                     
                     $("#NouvellesList").append(nouvelleRow);
                 }
                 currentETag = ETag;
                 $("#NouvellesList").empty();
-
-
                 for (let nouvelle of nouvelles) {
                     insertNouvelleList(nouvelle);
                 }
