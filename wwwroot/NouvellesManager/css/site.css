@@ -12,8 +12,8 @@ body {
 .mainContainer {
     display: flex;
     flex-direction: column;
-    width: 60%;
-    width: 60%;
+    width: 50%;
+    width: 50%;
     margin: auto;
     background-color: rgb(255, 255, 255);
     height: 100vh;
@@ -21,7 +21,7 @@ body {
     overflow: auto;
 }
 
-@media only screen and (max-width: 570px) {
+@media only screen and (max-width: 620px) {
 
     .mainContainer, .body {
       width: 100%;
